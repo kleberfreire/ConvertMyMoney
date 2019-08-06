@@ -4,6 +4,8 @@ const path = require('path')
 
 const port = process.env.PORT || 3000
 
+const convert = require('./lib/convert').convert
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.set('view engine', 'ejs')
@@ -13,12 +15,14 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-app.get('/result', (req, res) => {
-  const convercao = req.query.cotacao * req.query.quantidade
+app.get('/result', async (req, res) => {
+  const { cotacao, quantidade } = req.query
+  const resultConvert = await convert(cotacao, quantidade)
+
   const result = {
-    valueCotacao: parseFloat(req.query.cotacao),
-    valueQuantidade: parseFloat(req.query.quantidade),
-    resultado: parseFloat(convercao)
+    valueCotacao: parseFloat(cotacao),
+    valueQuantidade: parseFloat(quantidade),
+    resultado: parseFloat(resultConvert)
   }
 
   res.render('result', { result })
