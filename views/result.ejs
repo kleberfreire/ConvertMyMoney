@@ -6,17 +6,16 @@
       <button>Converter</button>
     </form>
   </div>
-
-  <div class="result">
-    <ul>
-      <li>Valor da cotação do Dolár: <span>R$ <%-result.valueCotacao %></span></li>
-      <li>Valor em Dolár: <span>USD <%- result.valueQuantidade %></span></li>        
-      <li>Valor em Reais: <span>R$ <%- result.resultado%></span></li>
-    </ul> 
-
-    
-    
-  </div>
-
+  <% if (error) {%>
+    <h2><%-error%></h2>
+  <%} else {%> 
+    <div class="result">
+      <ul>
+        <li>Valor da cotação do Dolár: <span>R$ <%-result.valueCotacao %></span></li>
+        <li>Valor em Dolár: <span>USD <%- result.valueQuantidade %></span></li>        
+        <li>Valor em Reais: <span>R$ <%- result.resultado%></span></li>
+      </ul>
+    </div>
+  <%}%>
 
 <%- include footer%>

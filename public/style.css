@@ -61,7 +61,7 @@ img {
   padding-inline-start: 0;
 }
 
-.result ul li{
+.result ul li, h2{
   text-align: center;
   font-size: 24px;
   padding-bottom: 8px; 
