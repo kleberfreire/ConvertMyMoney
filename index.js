@@ -21,7 +21,6 @@ app.get('/result', (req, res) => {
     resultado: parseFloat(convercao)
   }
 
-  console.log(result)
   res.render('result', { result })
 })
 app.listen(port, (err) => err ? console.log(err) : console.log('funcionando na porta ' + port))
