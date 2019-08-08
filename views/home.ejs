@@ -1,7 +1,7 @@
 <%- include header%>
   <div class="formInput">
     <form method="GET" action="/result">
-      <input type="number" name="cotacao" placeholder="Cotação dolar" step=0.01 required>
+      <input type="number" name="cotacao" placeholder="Cotação dolar" value="<%- cotacao%>" step=0.01 required>
       <input type="number" name="quantidade" placeholder="Quantidade dolares" step=0.01 required>
       <button>Converter</button>
     </form>

@@ -11,8 +11,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-app.get('/', (req, res) => {
-  res.render('home', { error: false })
+const cotacaoApi = require('./lib/api.bcb')
+
+app.get('/', async (req, res) => {
+  const cotacao = await cotacaoApi.getCotacao()
+  res.render('home', { error: false, cotacao })
 })
 
 app.get('/result', async (req, res) => {
